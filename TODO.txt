@@ -1,19 +1,19 @@
 COSE DA FARE: 
 
---Gestione vincite--
-    perdite e vincite x ogni gioco --> presi da credito
+--Gestione vincite-- (RICCARDO - FABIO)
+    perdite e vincite x ogni gioco --> presi da credito 
 
 
---Gestione utente (accesso e iscrizione)--
+--Gestione utente (accesso e iscrizione)-- (FABIO)
     log in & sign up
     utente abbinato a un codice (ex. #001)
     credito
 
---BlackJack--
+--BlackJack-- (RICCARDO)
     regole
 
---Roulette--
+--Roulette-- (RICCARDO)
     fatta
 
---Slot--
+--Slot-- (FABIO)
     regole
