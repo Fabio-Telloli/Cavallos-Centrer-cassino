@@ -12,6 +12,8 @@ public class Menu {
         System.out.println("####################");
         System.out.println("#   1. Registrati  #");
         System.out.println("#   2. Accedi      #");
+        System.out.println("#                  #");
+        System.out.println("#   0. ESCI        #");
         System.out.println("####################");
 
         System.out.println("\n cosa vuoi fare? ");

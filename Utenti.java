@@ -32,11 +32,15 @@ public class Utenti {
             } else if (scel == 2) {
                 accedi();
 
+                scel = menu.scelta();
+
             } else {
                 System.out.println("scelta non valida, riprova!! \n\n");
                 scel = menu.scelta();
             }
         }
+
+        System.err.println("\n\n© byDesign");
     }
 
     public void registrati() {
