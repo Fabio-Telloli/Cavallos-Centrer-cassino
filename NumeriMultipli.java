@@ -10,11 +10,13 @@ public class NumeriMultipli {
         }   
     }
 
-    public void getNumeroVincente() {
+    public void getNumeroVincente(Utente utente) {
         if (haiVinto) {
-            System.out.println("HAI VINTO!!!!");
+            utente.setCrediti(utente.getCrediti() + 50);
+            System.out.println("HAI VINTO!!!! i crediti sono: " + utente.getCrediti());
         } else {
-            System.out.println("HAI PERSO :(");
+            utente.setCrediti(utente.getCrediti() - 50);
+            System.out.println("HAI PERSO :(  i crediti sono: " + utente.getCrediti());
         }
     }
 }

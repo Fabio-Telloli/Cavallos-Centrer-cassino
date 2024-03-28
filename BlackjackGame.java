@@ -13,7 +13,7 @@ class BlackjackGame {
         scanner = new Scanner(System.in);
     }
 
-    public void play() {
+    public void play(Utente utente) {
         System.out.println("Benvenuto al Blackjack!");
         playerHand.addCard(deck.drawCard());
         dealerHand.addCard(deck.drawCard());
@@ -49,9 +49,15 @@ class BlackjackGame {
             int dealerScore = dealerHand.calculateValue();
 
             if (dealerScore > 21 || playerScore > dealerScore) {
-                System.out.println("Hai vinto!");
+                utente.setCrediti(utente.getCrediti() + 50);
+                System.out.println("Hai vinto! crediti: " + utente.getCrediti());
+
             } else if (playerScore < dealerScore) {
-                System.out.println("Il banco ha vinto.");
+                utente.setCrediti(utente.getCrediti() - 50);
+
+                System.out.println("Il banco ha vinto. crediti attuali: " + utente.getCrediti());
+                
+
             } else {
                 System.out.println("Pareggio.");
             }

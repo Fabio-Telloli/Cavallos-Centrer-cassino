@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class Casino {
     private int scelta;
     private Scanner scanner;
+    private Utente utente;
 
-    Casino() {
+    Casino(Utente utente) {
+        this.utente = utente;
         this.scanner = new Scanner(System.in);
     }
 
@@ -35,12 +37,12 @@ public class Casino {
                 
         
                     BancoRoulet roulette = new BancoRoulet(numeriBanco, coloreBanco, numeroUtente, coloreUtente, numeriMultipli);
-                    roulette.inizializazioneGame();
+                    roulette.play(utente);
                 break;
             
                 case 2:
                     BlackjackGame game = new BlackjackGame();
-                    game.play();
+                    game.play(utente);
                 break;
     
                 case 0:

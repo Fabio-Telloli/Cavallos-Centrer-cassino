@@ -1,10 +1,12 @@
 public class Utente {
     private String email;
     private String password;
+    private Integer crediti;
     
-    Utente(String email, String password) {
+    Utente(String email, String password, Integer crediti) {
         this.email = email;
         this.password = password;
+        this.crediti = crediti;
     }
 
     public String getEmail() {
@@ -15,8 +17,16 @@ public class Utente {
         return password;
     }
 
+    public Integer getCrediti() {
+        return crediti;
+    }
+
+    public void setCrediti(Integer crediti) {
+        this.crediti = crediti;
+    }
+
     @Override
     public String toString() {
-        return "Email: " + email + ", Password: " + password;
+        return email + " " + password + " " + crediti;
     }
 }
