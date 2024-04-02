@@ -3,16 +3,18 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import Utente.*;
+
 public class Utenti {
     Scanner scanner;
     FileWriter write;
     BufferedReader read;
+    String nomeFile;
 
     Utenti(String nomeFile) {
         try {
+            this.nomeFile = nomeFile;
             scanner = new Scanner(System.in);
-            write = new FileWriter(nomeFile, true);
-            read = new BufferedReader(new FileReader(nomeFile));
         } catch (Exception e) {
             System.out.println("non è stato possibile scrivere sul file");
         }
@@ -52,19 +54,17 @@ public class Utenti {
         System.out.println("\ninserisci la tua password: ");
         password = scanner.nextLine();
 
+
         Utente utente = new Utente(email, password, 1000000);
 
         try {
+            write = new FileWriter(nomeFile, true);  //reinizializzo il write x permettere un' altra registrazione
+
             write.write(utente +"\n");
             write.flush();    //svuota il buffer e scrive SUBITO sul file
-        } catch (Exception e) {
-            System.out.println("Non è stato possibile scrivere sul file");
-        }
-
-        try {
             write.close();
         } catch (Exception e) {
-            System.out.println("Errore durante la CHIUSURA del file");
+            System.out.println("Non è stato possibile scrivere sul file" + e.getMessage());
         }
 
         System.out.println("ciao " + email + " i tuoi crediti sono: " + utente.getCrediti());
@@ -80,16 +80,15 @@ public class Utenti {
         System.out.println("\ninserisci la password");
         passwordInput = scanner.nextLine();
 
-        BufferedReader readerAnother = null;
 
-        try {
-            readerAnother = new BufferedReader(new FileReader("prova.txt"));
+        try {  
+            read = new BufferedReader(new FileReader(nomeFile)); //reinizializzo il read x permettere un altro accesso
 
             String riga;
             boolean autenticazione = false;
             Utente utente = null;
 
-            while ((riga = readerAnother.readLine()) != null) {
+            while ((riga = read.readLine()) != null) {
                 
                 String[] parti = riga.split(" ");
 
@@ -102,7 +101,7 @@ public class Utenti {
             }
 
             if (autenticazione) {
-                System.out.println("\n\nCiao " + emailInput + " è un piacere rivederti");
+                System.out.println("\n\nCiao " + emailInput + " è un piacere rivederti" + " questi sono i tuoi crediti: " + utente.getCrediti());
 
                 Casino casino = new Casino(utente);
                 casino.sceltaGioco();
@@ -110,15 +109,14 @@ public class Utenti {
                 System.out.println("\n\nCredenziali non valide, riprovare");
             }
 
-            System.out.println(utente.getCrediti());
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Errore durante la lettura del file");
 
         } finally {
             try {
-                if (readerAnother != null) {
-                    readerAnother.close();
+                if (read != null) {
+                    read.close();
                 }
             } catch (Exception e) {
                 System.out.println("Errore nella chiusura del reader");
@@ -126,20 +124,9 @@ public class Utenti {
         }      
     }
 
-    public void chiudiRead() {
-        try {
-            read.close();
-        } catch (Exception e) {
-            System.out.println("errore nella chiusura del reader");
-        }
-    }
-
-
     public static void main(String[] args) {
         Utenti utenti = new Utenti("prova.txt");
 
         utenti.gestione();
-
-        utenti.chiudiRead();
     }
 }

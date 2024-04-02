@@ -1,5 +1,13 @@
 import java.util.Scanner;
 
+import BlackJack.*;
+import Roulette.BancoRoulet;
+import Roulette.ColoreRoulet;
+import Roulette.NumeriMultipli;
+import Roulette.NumeriRoulet;
+import Roulette.PuntataUser;
+import Utente.*;
+
 public class Casino {
     private int scelta;
     private Scanner scanner;
