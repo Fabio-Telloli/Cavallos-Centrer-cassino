@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class BancoRoulet {
     private int scelta;
+    private int puntata;
     private Scanner scanner;
     private NumeriRoulet numeroBanco;
     private ColoreRoulet coloreBanco;
@@ -61,23 +62,27 @@ public class BancoRoulet {
             System.out.println("##############################################################################");
             System.out.println("");
             System.out.println("");
-
+            
             scelta = scanner.nextInt();
             
+            System.out.println("inserisci la tua puntata");
+            puntata = scanner.nextInt();
+            
             int numeroVincente = this.numeroBanco.getNumeroVincente();
+            
 
             switch (scelta) {
                 case 1:
                     if (this.numeroUser.sceltaNumero() == numeroVincente) {
                         System.out.println("numero del banco: " + numeroVincente);
-                        utente.setCrediti(utente.getCrediti() + 50);
+                        utente.setCrediti(utente.getCrediti() + (puntata * 2));
                         System.out.println("");
                         System.out.println("HAI VINTO!!!!  i crediti sono: " + utente.getCrediti());
                         System.out.println("");
                         System.out.println("");
                     } else {
                         System.out.println("numero del banco: " + numeroVincente);
-                        utente.setCrediti(utente.getCrediti() - 50);
+                        utente.setCrediti(utente.getCrediti() - puntata);
                         System.out.println("");
                         System.out.println("HAI PERSO :(   i crediti sono: " + utente.getCrediti());
                         System.out.println("");
